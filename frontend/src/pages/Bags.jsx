@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { api, emitBoardRefresh, onBoardRefresh } from '../api'
 
-const surface_panel = true
 export default function Bags() {
   const [bags, setBags] = useState([])
   const [chutes, setChutes] = useState([])
@@ -51,7 +50,7 @@ export default function Bags() {
     } catch (e) { setErr(e.message) }
   }
   return (
-    <div className={surface_panel ? "panel" : "panel"}>
+    <div className="panel">
       <h2>封袋 / 袋册</h2>
       {msg && <div className="msg">{msg}</div>}
       {err && <div className="err">{err}</div>}

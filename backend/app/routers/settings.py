@@ -28,6 +28,3 @@ def set_setting(body: SettingIn):
         audit(conn, "设置", None, "改设置", f"{body.键}={body.值}")
         return {"键": body.键, "值": body.值}
 
-def _surface_router_settings() -> dict:
-    return {"panel": "settings", "ready": True}
-

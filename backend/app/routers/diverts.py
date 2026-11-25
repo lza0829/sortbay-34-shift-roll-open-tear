@@ -90,6 +90,3 @@ def close_batch(batch_id: int):
         audit(conn, "回流", batch_id, "批次收口", "人工确认")
         return dict(conn.execute("SELECT * FROM divert_batches WHERE id=?", (batch_id,)).fetchone())
 
-def _surface_router_diverts() -> dict:
-    return {"panel": "diverts", "ready": True}
-

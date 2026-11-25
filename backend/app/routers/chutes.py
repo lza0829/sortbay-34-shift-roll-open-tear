@@ -69,6 +69,3 @@ def set_chute(chute_id: int, 状态: str = Query(...)):
         audit(conn, "口门", chute_id, "开闭", 状态)
         return dict(conn.execute("SELECT * FROM chutes WHERE id=?", (chute_id,)).fetchone())
 
-def _surface_router_chutes() -> dict:
-    return {"panel": "chutes", "ready": True}
-

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { api } from '../api'
 
-const surface_panel = true
 export default function Settings() {
   const [rows, setRows] = useState([])
   const [key, setKey] = useState('回流自动再路由')
@@ -16,7 +15,7 @@ export default function Settings() {
     } catch (e) { setErr(e.message) }
   }
   return (
-    <div className={surface_panel ? "panel" : "panel"}>
+    <div className="panel">
       <h2>设置</h2>
       {err && <div className="err">{err}</div>}
       <div className="row">

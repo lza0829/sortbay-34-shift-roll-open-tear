@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { api } from '../api'
 
-const surface_panel = true
 export default function RoutesPage() {
   const [rows, setRows] = useState([])
   const [chutes, setChutes] = useState([])
@@ -22,7 +21,7 @@ export default function RoutesPage() {
     } catch (e) { setErr(e.message) }
   }
   return (
-    <div className={surface_panel ? "panel" : "panel"}>
+    <div className="panel">
       <h2>路由表</h2>
       {err && <div className="err">{err}</div>}
       <div className="row">

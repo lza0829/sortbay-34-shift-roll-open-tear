@@ -1,5 +1,4 @@
 from __future__ import annotations
-from app.services import roll_surface
 
 from datetime import datetime
 
@@ -443,14 +442,4 @@ def seal_shift(shift_id: int):
         )
         audit(conn, "班次", shift_id, "封班", "")
         return row_to_dict(conn.execute("SELECT * FROM shifts WHERE id=?", (shift_id,)).fetchone())
-
-_create_shift_impl = create_shift
-
-
-def create_shift(*args, **kwargs):
-    out = _create_shift_impl(*args, **kwargs)
-    return roll_surface.after_roll(out, *args, **kwargs)
-
-def _surface_router_shifts() -> dict:
-    return {"panel": "shifts", "ready": True}
 

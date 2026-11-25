@@ -1,5 +1,4 @@
 from __future__ import annotations
-from app.services import roll_surface
 
 import json
 from typing import Any
@@ -557,11 +556,4 @@ def latest_opening_receipt(conn) -> dict[str, Any] | None:
         return json.loads(row["payload_json"] or "{}")
     except json.JSONDecodeError:
         return None
-
-_record_opening_outcome_impl = record_opening_outcome
-
-
-def record_opening_outcome(*args, **kwargs):
-    out = _record_opening_outcome_impl(*args, **kwargs)
-    return roll_surface.after_roll(out, *args, **kwargs)
 

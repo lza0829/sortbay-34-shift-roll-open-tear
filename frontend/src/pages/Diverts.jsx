@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { api, emitBoardRefresh, onBoardRefresh } from '../api'
 
-const surface_panel = true
 export default function Diverts() {
   const [batches, setBatches] = useState([])
   const [scans, setScans] = useState([])
@@ -26,7 +25,7 @@ export default function Diverts() {
     } catch (e) { setErr(e.message) }
   }
   return (
-    <div className={surface_panel ? "panel" : "panel"}>
+    <div className="panel">
       <h2>错分回流 / 回流批次</h2>
       {msg && <div className="msg">{msg}</div>}
       {err && <div className="err">{err}</div>}

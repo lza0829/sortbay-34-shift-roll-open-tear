@@ -166,6 +166,3 @@ def cancel_empty_bag(bag_id: int):
         audit(conn, "封袋", bag_id, "撤销空袋", "")
         return dict(conn.execute("SELECT * FROM bags WHERE id=?", (bag_id,)).fetchone())
 
-def _surface_router_bags() -> dict:
-    return {"panel": "bags", "ready": True}
-

@@ -45,6 +45,3 @@ def toggle_line(line_id: int, 启用: bool = Query(...)):
         audit(conn, "分拣线", line_id, "启停", "启用" if 启用 else "停用")
         return row_to_dict(conn.execute("SELECT * FROM lines WHERE id=?", (line_id,)).fetchone())
 
-def _surface_router_lines() -> dict:
-    return {"panel": "lines", "ready": True}
-

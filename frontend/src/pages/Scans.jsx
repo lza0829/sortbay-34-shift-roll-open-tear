@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { api, emitBoardRefresh, onBoardRefresh } from '../api'
 
-const surface_panel = true
 export default function Scans() {
   const [rows, setRows] = useState([])
   const [barcode, setBarcode] = useState('')
@@ -28,7 +27,7 @@ export default function Scans() {
     } catch (e) { setErr(e.message) }
   }
   return (
-    <div className={surface_panel ? "panel" : "panel"}>
+    <div className="panel">
       <h2>过机扫描 / 扫描册</h2>
       <div className="row">
         <label>条码<input value={barcode} onChange={(e) => setBarcode(e.target.value)} /></label>

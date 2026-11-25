@@ -18,7 +18,6 @@ function MismatchStrip({ bar }) {
   )
 }
 
-const surface_panel = true
 export default function Shifts() {
   const [rows, setRows] = useState([])
   const [rec, setRec] = useState(null)
@@ -87,7 +86,7 @@ export default function Shifts() {
   const bar = blocked?.班次错位条 || receipt?.开班后班次错位条 || rec?.班次错位条
 
   return (
-    <div className={surface_panel ? "panel" : "panel"}>
+    <div className="panel">
       <h2>班次对账 / 开下一班</h2>
       {arch && <p className="muted">全局架构：{arch.口径}（{arch.架构键}）。{arch.开班成功条件}。</p>}
       {err && <div className="err" data-testid="open-shift-error">{err}</div>}

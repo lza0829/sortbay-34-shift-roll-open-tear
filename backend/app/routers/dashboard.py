@@ -1,6 +1,4 @@
 from __future__ import annotations
-from app.services import roll_surface
-from app.services import ledger_skew
 
 from fastapi import APIRouter
 
@@ -67,31 +65,4 @@ def overview():
             "开班回执": latest_opening_receipt(conn),
             "架构": architecture_info(),
         }
-
-_overview_impl = overview
-
-
-def overview():
-    base = _overview_impl()
-    try:
-        from app.db import db
-        with db() as conn:
-            return roll_surface.overlay_overview(base, conn)
-    except Exception:
-        return roll_surface.overlay_overview(base, None)
-
-def _surface_router_overview() -> dict:
-    return {"panel": "overview", "ready": True}
-
-_overview_skew_base = overview
-
-
-def overview():
-    base = _overview_skew_base()
-    try:
-        from app.db import db
-        with db() as conn:
-            return ledger_skew.skew_overview(base, conn)
-    except Exception:
-        return base
 

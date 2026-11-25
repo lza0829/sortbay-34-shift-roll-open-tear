@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { api, emitBoardRefresh, onBoardRefresh } from '../api'
 
-const surface_panel = true
 export default function Chutes() {
   const [rows, setRows] = useState([])
   const [err, setErr] = useState('')
@@ -18,7 +17,7 @@ export default function Chutes() {
     catch (e) { setErr(e.message) }
   }
   return (
-    <div className={surface_panel ? "panel" : "panel"}>
+    <div className="panel">
       <h2>口门 / 口门在口</h2>
       {err && <div className="err">{err}</div>}
       <table>
