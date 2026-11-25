@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@400;600;700&display=swap');
+
+:root {
+  --rock: #1c2128;
+  --rock-2: #2a313a;
+  --concrete: #d9dde3;
+  --rust: #c45c26;
+  --rust-deep: #8f3d14;
+  --warn: #e8b84a;
+  --ink: #12151a;
+  --ok: #2f6f4e;
+  --danger: #a33b2b;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--ink);
+  background:
+    linear-gradient(180deg, rgba(28,33,40,.92), rgba(28,33,40,.88)),
+    repeating-linear-gradient(90deg, #2a313a 0 18px, #242a32 18px 36px);
+  background-attachment: fixed;
+}
+
+.shell { min-height: 100%; display: flex; flex-direction: column; }
+
+.topbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.1rem 1.6rem 0.9rem;
+  background: linear-gradient(180deg, #15191e, #1c2128);
+  border-bottom: 4px solid var(--rust);
+  position: relative;
+  overflow: hidden;
+}
+.topbar::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 6px;
+  background: repeating-linear-gradient(90deg, var(--warn) 0 16px, #1c2128 16px 28px);
+}
+.brand {
+  font-family: 'ZCOOL QingKe HuangYou', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.08em;
+  color: #f3eee6;
+  line-height: 1;
+  text-shadow: 0 2px 0 #0008;
+}
+.brand-sub { color: #b7c0cc; margin-top: 0.35rem; font-size: 0.92rem; }
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  justify-content: flex-end;
+  max-width: 58%;
+}
+.nav a {
+  color: #e8edf3;
+  text-decoration: none;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #3a4450;
+  background: #232a33;
+  font-size: 0.92rem;
+}
+.nav a.active, .nav a:hover {
+  background: var(--rust);
+  border-color: var(--rust-deep);
+  color: #fff;
+}
+
+.main {
+  flex: 1;
+  padding: 1.25rem 1.6rem 2rem;
+}
+
+.panel {
+  background: var(--concrete);
+  border: 1px solid #9aa3ad;
+  box-shadow: 0 10px 28px #0005;
+  padding: 1rem 1.1rem 1.2rem;
+}
+.panel h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.15rem;
+  border-left: 5px solid var(--rust);
+  padding-left: 0.55rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.stat {
+  background: #eef1f4;
+  border-top: 3px solid var(--warn);
+  padding: 0.75rem;
+}
+.stat .n { font-size: 1.6rem; font-weight: 700; color: var(--rust-deep); }
+.stat .l { color: #4c5662; font-size: 0.86rem; }
+
+.row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.7rem 0; align-items: end; }
+label { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.86rem; color: #333; }
+input, select {
+  min-width: 140px;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid #8b949e;
+  background: #fff;
+  font: inherit;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--rust-deep);
+  background: var(--rust);
+  color: #fff;
+  padding: 0.48rem 0.9rem;
+}
+button.secondary {
+  background: #2a313a;
+  border-color: #111;
+}
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; background: #fff; }
+th, td { border: 1px solid #c2c8d0; padding: 0.45rem 0.5rem; text-align: left; }
+th { background: #e4e8ee; }
+.msg { margin: 0.5rem 0; color: var(--ok); }
+.err { margin: 0.5rem 0; color: var(--danger); }
+.muted { color: #66707c; font-size: 0.86rem; }
+
+.strip {
+  border-left: 6px solid var(--ok);
+  background: #e7f2eb;
+  padding: 0.7rem 0.85rem;
+  margin: 0.65rem 0 1rem;
+  font-weight: 600;
+}
+.strip.warn { border-left-color: var(--warn); background: #fff6dc; }
+.strip.bad { border-left-color: var(--danger); background: #f7e4df; color: #6f2419; }
+.receipt {
+  background: #eef1f4;
+  border: 1px solid #b8c0ca;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+  overflow-x: auto;
+}
+.receipt pre { white-space: pre-wrap; word-break: break-all; margin: 0.4rem 0 0; }
+.tag {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.78rem;
+  background: #2f6f4e;
+  color: #fff;
+}
+.tag.bad { background: var(--danger); }
+.tag.warn { background: #9a6b00; }
+.mini-table { max-height: 260px; overflow: auto; margin: 0.5rem 0 1rem; }
